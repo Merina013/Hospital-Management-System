@@ -1,0 +1,128 @@
+mysql> create database hospital;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> use hospital
+Database changed
+mysql> create table patients(
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> name VARCHAR(255) NOT NULL,
+    -> age INT NOT NULL,
+    -> gender VARCHAR(10) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> CREATE TABLE DOCTORS(
+    -> id INT AUTO_INCREMENT PRIMARY KEY;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> CREATE TABLE DOCTORS(
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> name VARCHAR(255) NOT NULL,
+    -> specialization VARCHAR(255) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> CREATE TABLE APPOINTMENTS(
+    -> id INT AUTO_INCREMENT PRIMARY KEY,
+    -> patient_id INT NOT NULL,
+    -> doctor_id INT NOT NULL,
+    -> appointment_date DATE NOT NULL,
+    -> FOREIGN KEY (patient_id) REFERENCES patients(id),
+    -> FOREIGN KEY (doctor_id) REFERENCES doctors(id)
+    -> );
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_hospital |
++--------------------+
+| appointments       |
+| doctors            |
+| patients           |
++--------------------+
+3 rows in set (0.01 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Merina Roy","GEneral Physician");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Pankaj Jain","General Physician");
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  INSERT INTO DOCTORS(name, specialization) VALUES("Harshit Amod","NeuroSurgeon");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM DOCTORS;
++----+--------------+-------------------+
+| id | name         | specialization    |
++----+--------------+-------------------+
+|  1 | Merina Roy   | GEneral Physician |
+|  2 | Pankaj Jain  | General Physician |
+|  3 | Harshit Amod | NeuroSurgeon      |
++----+--------------+-------------------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Ananya Sharma","Cardiologist");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Rohan Mehta","Neurologist");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Priya Kapoor","Pediatrician");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Arjun Singh","Orthopedic Surgeon");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Sneha Verma","Dermatologist");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Karan Malhotra","Oncologist");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Sameer Khan","Psychiatrist");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Kavita Iyer","Endocrinologist");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DOCTORS(name, specialization) VALUES("Rajesh Bhatia","NeuroSurgeon");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_hospital |
++--------------------+
+| appointments       |
+| doctors            |
+| patients           |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> Select * from DOCTORS;
++----+----------------+--------------------+
+| id | name           | specialization     |
++----+----------------+--------------------+
+|  1 | Merina Roy     | GEneral Physician  |
+|  2 | Pankaj Jain    | General Physician  |
+|  3 | Harshit Amod   | NeuroSurgeon       |
+|  4 | Ananya Sharma  | Cardiologist       |
+|  5 | Rohan Mehta    | Neurologist        |
+|  6 | Priya Kapoor   | Pediatrician       |
+|  7 | Arjun Singh    | Orthopedic Surgeon |
+|  8 | Sneha Verma    | Dermatologist      |
+|  9 | Karan Malhotra | Oncologist         |
+| 10 | Sameer Khan    | Psychiatrist       |
+| 11 | Kavita Iyer    | Endocrinologist    |
+| 12 | Rajesh Bhatia  | NeuroSurgeon       |
++----+----------------+--------------------+
+12 rows in set (0.00 sec)
+
+mysql> describe patients;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int          | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(255) | NO   |     | NULL    |                |
+| age    | int          | NO   |     | NULL    |                |
+| gender | varchar(10)  | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+4 rows in set (0.02 sec)
