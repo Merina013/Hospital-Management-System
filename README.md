@@ -39,7 +39,3 @@ The system allows you to manage **patients, doctors, and appointments** with an 
 - **Scanner** – For console-based user input
 
 ---
-
-
-    gender VARCHAR(10) NOT NULL
-);
